@@ -1,0 +1,21 @@
+server:
+  port: 8007
+spring:
+  application:
+    name: feignuserclass
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.187.1:8001/eureka,http://192.168.187.1:8002/eureka
+    register-with-eureka: true
+    fetch-registry: true
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+logging:
+  level:
+    com.example.userclassprovider.feign: debug
+usernametest: lisi
