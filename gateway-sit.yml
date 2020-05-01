@@ -1,0 +1,48 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: gatewayspringcloud
+  cloud:
+    discovery:
+      locator:
+        lower-case-service-id: true
+        enabled: true
+    gateway:
+      routes:
+        - id: userprovider # 路由的id,没有规定规则但要求唯一,建议配合服务名
+          uri: lb://userprovider
+          predicates:
+            # 断言，路径相匹配的进行路由
+            - Path=/user/findAll
+            #在什么时间之后可以访问
+            #- After=2020-05-01T0:59:28.860+08:00[Asia/Shanghai]
+            #- Before=2020-07-01T10:59:28.860+08:00[Asia/Shanghai]
+            #- Between= 同理，在哪个时间段内执行
+            # - Cookie=username,lbaci
+            #指定请求头
+            #- Method=get
+            #- Query=usernamem,1
+        - id: classprovider
+          uri: lb://classprovider
+          predicates:
+            - Path=/class/findAll
+
+
+        - id: userclassprovider
+          uri: lb://FEIGNUSERCLASS
+          predicates:
+            - Path=/feign/**
+
+
+
+
+
+eureka:
+  instance:
+    hostname: 192.168.187.1
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8001/eureka,http://${eureka.instance.hostname}:8002/eureka
