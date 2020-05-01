@@ -18,7 +18,7 @@ ribbon:
 logging:
   level:
     com.example.userclassprovider.feign: debug
-usernametest: wangwu
+usernametest: lsisitest
 #暴露监控端点
 management:
   endpoints:
