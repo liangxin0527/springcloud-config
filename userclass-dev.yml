@@ -19,3 +19,9 @@ logging:
   level:
     com.example.userclassprovider.feign: debug
 usernametest: wangwu
+#暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
