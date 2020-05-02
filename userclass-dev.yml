@@ -23,7 +23,7 @@ ribbon:
 logging:
   level:
     com.example.userclassprovider.feign: debug
-usernametest: wangwu
+usernametest: wangwu1111
 #暴露监控端点
 #rabbitmq相关设置 ，暴露 bus刷新配置的端点
 management:
