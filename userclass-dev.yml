@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: feignuserclass
+  rabbitmq:
+    host: 192.168.197.143
+    username: lbaci
+    password: lbaci
+    port: 5672
 eureka:
   client:
     service-url:
@@ -20,8 +25,9 @@ logging:
     com.example.userclassprovider.feign: debug
 usernametest: lsisitest
 #暴露监控端点
+#rabbitmq相关设置 ，暴露 bus刷新配置的端点
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: 'bus-refresh'
