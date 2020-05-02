@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: gatewayspringcloud
+  rabbitmq:
+    host: 192.168.197.143
+    username: lbaci
+    password: lbaci
+    port: 5672
   cloud:
     discovery:
       locator:
@@ -35,8 +40,13 @@ spring:
             - Path=/feign/**
 
 
-username:lisi
-
+username: lisi
+#rabbitmq相关设置 ，暴露 bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
 
 eureka:
   instance:
